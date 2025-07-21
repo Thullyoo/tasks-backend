@@ -42,6 +42,15 @@ pipeline{
             }
         }
       }
+      stage ('Deploy Frontend'){
+        steps{
+          dir('tasks-frontend'){
+            git 'https://github.com/Thullyoo/tasks-frontend'
+            bat 'mvn clean package'
+            deploy adapters: [tomcat8(alternativeDeploymentContext: '', credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', onFailure: false, war: 'target/tasks.war'
+          }
+        }
+      }
     }
 }
 
