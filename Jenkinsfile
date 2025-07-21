@@ -35,11 +35,11 @@ pipeline{
         }
       }
       stage ('Api Test'){
-        steps{
-          dir('api-test'){
-            git 'https://github.com/Thullyoo/tasks-test-api'
-            bat 'mvn test'
-          }
+         steps{
+            dir('api-test'){
+                git 'https://github.com/Thullyoo/tasks-test-api'
+                bat 'mvn test'
+            }
         }
       }
     }
